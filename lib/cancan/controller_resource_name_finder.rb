@@ -8,6 +8,8 @@ module CanCan
 
     def namespaced_name
       [namespace, name].join('/').singularize.camelize.safe_constantize || name
+    rescue LoadError
+      name
     end
 
     def name
